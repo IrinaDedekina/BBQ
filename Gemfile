@@ -8,6 +8,10 @@ gem 'puma', '~> 5.0'
 gem 'webpacker', '~> 5.0'
 gem 'devise'
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
