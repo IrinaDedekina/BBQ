@@ -13,15 +13,23 @@
   </head>
   <body>
 
-    <div class="navbar navbar-default navbar-static-top">
+    <div class="navbar navbar-expand navbar-default navbar-static-top border-bottom">
       <div class="container">
         <%= link_to "BBQ!", root_path, class: 'navbar-brand' %>
 
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
-            <li><%= link_to "Link3", "/path3"  %></li>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <% if user_signed_in? %>
+              <li class="nav-item"><%= link_to 'Профиль', current_user, class: 'nav-link' %></li>
+              <li class="nav-item"><%= link_to 'Выйти', destroy_user_session_path,
+                              method: :delete,
+                              class: 'nav-link' %></li>
+            <% else %>
+              <li class="nav-item"><%= link_to 'Войти', new_user_session_path, class: 'nav-link' %></li>
+              <li class="nav-item"><%= link_to 'Зарегистрироваться',
+                              new_user_registration_path,
+                              class: 'nav-link' %></li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -33,17 +41,6 @@
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
       </div><!--/row-->
 
       <footer>
