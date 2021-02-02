@@ -36,8 +36,10 @@ ru:
     company: 'Хороший программист'
 
   errors:
-    one: '%{count} ошибка'
-    few: '%{count} ошибки'
-    many: '%{count} ошибок'
+    messages:
+      not_saved:
+        one: '%{count} ошибка'
+        few: '%{count} ошибки'
+        many: '%{count} ошибок'
 
 

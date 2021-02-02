@@ -4,7 +4,8 @@
 <% if errors.any? %>
   <div class="alert alert-danger">
     <div class="lead buffer-bottom">
-      В вашей форме <%= I18n.t :errors, count: errors.count %>
+      В вашей форме <%= t("errors.messages.not_saved",
+                 count: errors.count) %>
     </div>
 
     <ul>
