@@ -19,6 +19,15 @@ ru:
         datetime: 'Дата и время'
         description: 'Описание'
 
+    errors:
+      models:
+        subscription:
+          attributes:
+            user_email:
+              use_of_registered_email: "Этот email зарегистрирован. Для подписки зайдите в Ваш профиль."
+
+
+
   # Перевод сообщений, которые отправляет контроллер
   controllers:
     events:
@@ -58,3 +67,4 @@ ru:
     subscription:
       destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
       decline_subscription: 'Вы не можете подписаться на свое событие'
+      use_of_registered_email: "Этот email зарегистрирован. Для подписки зайдите в Ваш профиль."

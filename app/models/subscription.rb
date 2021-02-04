@@ -18,6 +18,7 @@ class Subscription < ApplicationRecord
   validates :user_email, uniqueness: {scope: :event_id}, unless: -> { user.present? }
 
   validate :current_user_event?, if: -> { user.present? }
+  validate :email_presence_database?
 
   # Если есть юзер, выдаем его имя,
   # если нет – дергаем исходный метод
@@ -42,6 +43,12 @@ class Subscription < ApplicationRecord
   def current_user_event?
     if event.user == user
       errors.add(:event, I18n.t('subscriptions.subscription.decline_subscription'))
+    end
+  end
+
+  def email_presence_database?
+    if User.exists?(email: user_email.downcase)
+      errors.add(:event, I18n.t('subscriptions.subscription.use_of_registered_email'))
     end
   end
 end
