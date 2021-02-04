@@ -67,4 +67,3 @@ ru:
     subscription:
       destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
       decline_subscription: 'Вы не можете подписаться на свое событие'
-      use_of_registered_email: "Этот email зарегистрирован. Для подписки зайдите в Ваш профиль."

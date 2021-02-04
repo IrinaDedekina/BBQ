@@ -48,7 +48,7 @@ class Subscription < ApplicationRecord
 
   def email_presence_database?
     if User.exists?(email: user_email.downcase)
-      errors.add(:event, I18n.t('subscriptions.subscription.use_of_registered_email'))
+      errors.add(:user_email, :taken)
     end
   end
 end
