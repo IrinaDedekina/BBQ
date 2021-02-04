@@ -57,3 +57,4 @@ ru:
   subscriptions:
     subscription:
       destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
+      decline_subscription: 'Вы не можете подписаться на свое событие'
