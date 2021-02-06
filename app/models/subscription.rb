@@ -17,8 +17,8 @@ class Subscription < ApplicationRecord
   # Или один email может использоваться только один раз (если анонимная подписка)
   validates :user_email, uniqueness: {scope: :event_id}, unless: -> { user.present? }
 
-  validate :current_user_event?, if: -> { user.present? }
-  validate :email_presence_database?
+  validate :current_user_event?
+  validate :email_presence_database?, unless: -> { user.present? }
 
   # Если есть юзер, выдаем его имя,
   # если нет – дергаем исходный метод
