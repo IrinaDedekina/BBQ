@@ -83,3 +83,19 @@ ru:
     subscription:
       destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
       decline_subscription: 'Вы не можете подписаться на свое событие'
+
+  event_mailer:
+    comment:
+      title: 'Новый комментарий'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
+    subscription:
+      title: 'Новая подписка'
+      name: 'Имя'
+      email: 'Email'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
