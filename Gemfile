@@ -12,6 +12,7 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'fog-aws'
+gem 'mailjet'
 
 group :production do
   gem 'pg'
