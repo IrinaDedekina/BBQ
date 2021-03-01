@@ -98,5 +98,22 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.action_mailer.default_url_options = {host: 'megab-b-q.herokuapp.com'}
-  config.action_mailer.delivery_method = :mailjet
+  # Ошибки рассылки юзеру не показываем
+  config.action_mailer.raise_delivery_errors = false
+
+  # Делать рассылку писем (при false приложение только имитирует отправку)
+  config.action_mailer.perform_deliveries = true
+
+  # Устанавливаем протокол, по которому отправлять (SMTP)
+  config.action_mailer.delivery_method = :smtp
+
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+  :address              => "smtp.gmail.com",
+  :port                 => 587,
+  :user_name            => ENV['gmail_username'],
+  :password             => ENV['gmail_password'],
+  :authentication       => "plain",
+  :enable_starttls_auto => true
+  }
 end
