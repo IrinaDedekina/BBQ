@@ -85,6 +85,7 @@ ru:
         change_your_password: Изменить пароль
         confirm_new_password: Повторите новый пароль
         new_password: Новый пароль
+        characters_minimum: символов минимум
       new:
         forgot_your_password: Забыли пароль?
         send_me_reset_password_instructions: Выслать новый пароль
@@ -128,6 +129,7 @@ ru:
         sign_in: Войти
         sign_in_with_provider: 'Войти с помощью: %{provider}'
         sign_up: Регистрация
+        confirmation_instructions: Получить подтверждение
       minimum_password_length:
         few: "(минимум %{count} знака)"
         many: "(минимум %{count} знаков)"
