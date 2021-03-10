@@ -12,20 +12,20 @@
           <em>(<%= @minimum_password_length %> <%= t("devise.passwords.edit.characters_minimum") %>)</em>
         <% end %>
         <div class="col-sm-6">
-          <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control form-control-sm" %>
         </div>
       </div>
 
       <div class="mb-3">
         <%= f.label :password_confirmation, t("devise.passwords.edit.confirm_new_password") %>
         <div class="col-sm-6">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-sm" %>
         </div>
       </div>
 
       <div class="mb-3">
         <div class="col-sm-offset-2 col-sm-6">
-          <%= f.submit t("devise.passwords.edit.change_my_password") %>
+          <%= f.submit t("devise.passwords.edit.change_my_password"), class: "btn btn-primary"  %>
         </div>
       </div>
     <% end %>
