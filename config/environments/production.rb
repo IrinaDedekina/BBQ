@@ -110,12 +110,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :mailjet
 
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :user_name            => ENV['gmail_username'],
-    :password             => ENV['gmail_password'],
-    :authentication       => "plain",
-   :enable_starttls_auto => true
-   }
-
+    address: "smtp.gmail.com",
+    port: 587,
+    user_name: Rails.application.credentials.dig(Rails.env.to_sym, :gmail_username),
+    password: Rails.application.credentials.dig(Rails.env.to_sym, :gmail_password),
+    authentication: "plain",
+    enable_starttls_auto: true
+  }
 end
