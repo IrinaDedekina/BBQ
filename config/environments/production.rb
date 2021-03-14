@@ -104,17 +104,5 @@ Rails.application.configure do
   # Делать рассылку писем (при false приложение только имитирует отправку)
   config.action_mailer.perform_deliveries = true
 
-  # Устанавливаем протокол, по которому отправлять (SMTP)
-  config.action_mailer.delivery_method = :smtp
-
   config.action_mailer.delivery_method = :mailjet
-
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    user_name: Rails.application.credentials.dig(Rails.env.to_sym, :gmail_username),
-    password: Rails.application.credentials.dig(Rails.env.to_sym, :gmail_password),
-    authentication: "plain",
-    enable_starttls_auto: true
-  }
 end
