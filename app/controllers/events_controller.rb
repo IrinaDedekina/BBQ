@@ -6,13 +6,16 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show]
 
   # Задаем объект @event от текущего юзера для других действий
-  before_action :set_current_user_event, only: [:edit, :update, :destroy]
+  after_action :verify_authorized, only: [:edit, :update, :destroy]
+
+  after_action :verify_policy_scoped, only: :index
 
   def index
-    @events = Event.all
+    @events = policy_scope(Event)
   end
 
   def show
+    authorize @event
     @new_comment = @event.comments.build(params[:comment])
     @new_subscription = @event.subscriptions.build(params[:subscription])
     # Болванка модели для формы добавления фотографии
@@ -20,13 +23,17 @@ class EventsController < ApplicationController
   end
 
   def new
+    authorize @event
     @event = current_user.events.build
   end
 
   def edit
+    authorize @event
   end
 
   def create
+    authorize @event
+
     @event = current_user.events.build(event_params)
 
     if @event.save
@@ -39,6 +46,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    authorize @link
     if @event.update(event_params)
       redirect_to @event, notice: I18n.t('controllers.events.updated')
     else
@@ -47,16 +55,12 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    user = @event.user
+    authorize @link
     @event.destroy
     redirect_to user_path(user), notice: I18n.t('controllers.events.destroyed')
   end
 
   private
-
-  def set_current_user_event
-    @event = current_user.events.find(params[:id])
-  end
 
   def set_event
     @event = Event.find(params[:id])

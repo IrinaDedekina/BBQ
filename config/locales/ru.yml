@@ -84,6 +84,9 @@ ru:
       destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
       decline_subscription: 'Вы не можете подписаться на свое событие'
 
+  pundit:
+    not_authorized: 'Вам сюда нельзя!'
+
   event_mailer:
     comment:
       title: 'Новый комментарий'
