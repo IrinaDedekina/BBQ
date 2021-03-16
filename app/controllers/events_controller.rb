@@ -2,11 +2,10 @@ class EventsController < ApplicationController
   # Встроенный в девайз фильтр - посылает незалогиненного пользователя
   before_action :authenticate_user!, except: [:show, :index]
 
-  # Задаем объект @event для экшена show
-  before_action :set_event, only: [:show]
+  before_action :set_event, except: [:index, :new, :create]
 
   # Задаем объект @event от текущего юзера для других действий
-  after_action :verify_authorized, only: [:edit, :update, :destroy]
+  after_action :verify_authorized, only: [:edit, :update, :destroy, :show]
 
   after_action :verify_policy_scoped, only: :index
 
@@ -23,8 +22,9 @@ class EventsController < ApplicationController
   end
 
   def new
-    authorize @event
     @event = current_user.events.build
+
+    authorize @event
   end
 
   def edit
@@ -32,9 +32,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    authorize @event
-
     @event = current_user.events.build(event_params)
+
+    authorize @event
 
     if @event.save
       # Используем сообщение из файла локалей ru.yml
@@ -46,7 +46,8 @@ class EventsController < ApplicationController
   end
 
   def update
-    authorize @link
+    authorize @event
+
     if @event.update(event_params)
       redirect_to @event, notice: I18n.t('controllers.events.updated')
     else
@@ -55,7 +56,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    authorize @link
+    authorize @event
+
     @event.destroy
     redirect_to user_path(user), notice: I18n.t('controllers.events.destroyed')
   end
