@@ -1,24 +1,30 @@
-# README
+### Приложение "Шашлыки"
+#### Описание
+В данном приложении можно создавать событие, на которое могут подписаться все желающие, кто хочет присоединиться.
+Так же можно делиться фотографиями данного события и оставлять комментарии.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Запуск программы
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Необходимо склонировать репозиторий командой:
+``` 
+git clone https://github.com/IrinaDedekina/bbq.git
+```
+2. Перейти в папку проекта
+3. Прописать свои переменные окружения и создайте `master.key` для их расшифровки используя команду:
+```
+EDITOR=vim rails credentials:edit
+```
+5. Перед запуском программы необходимо выполнить команды:
+```
+bundle install
+bundle exec rake db:migrate
+yarn
+```
+6. Для запуска приложения выполнить команду:
+```
+bundle exec rails s
+```
+7. Перейти по ссылке:
+```
+http://localhost:3000/
+```
